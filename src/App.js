@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      <h1>hello dos</h1>
+      <h1>hello dos rancho</h1>
     </div>
   );
 }
