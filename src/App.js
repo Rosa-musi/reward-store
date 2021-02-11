@@ -1,8 +1,9 @@
+import Header from './components/Header'
 
 function App() {
   return (
     <div>
-      <h1>hello dos rancho</h1>
+      <Header />
     </div>
   );
 }
