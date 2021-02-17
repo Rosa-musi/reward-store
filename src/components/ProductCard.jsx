@@ -16,7 +16,7 @@ const ShoppingIcon = styled.img`
     width: 42px;
 `
 
-const NotEnCoinsDiv = styled.button`
+const NotEnCoinsDiv = styled.div`
     width: 142px;
     height: 42px;
     background:#616161;
@@ -36,6 +36,10 @@ const NotEnCoinsDiv = styled.button`
 const Coin = styled.img`
     width: 20px;
 `
+const NotEText = styled.p`
+    font-size: 14px;
+    color: #fff;
+`
 
 
 const Separator = styled.span`
@@ -50,9 +54,38 @@ const Category = styled.p`
     color: #A3A3A3;
 `
 
-const name = styled.p`
+const Name = styled.p`
     font-size: 1px;
     color:  #616161;
+`
+
+const HoverDiv = styled.div`
+    display: flex;
+    width: 276px;
+    height: 276px;
+    background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
+`
+const CoinsDiv = styled.div`
+    width: auto;
+    display: flex;
+`
+const HoverSaldo = styled.p`
+    font-size: 36px;
+    color: #fff;
+    font-weight: 400;
+`
+const CoinHover = styled.img`
+    width: 26px;
+`
+const RedeemButton = styled.button`
+    width: 180px;
+    height: 42px;
+    background:#fff;
+    border-radius: 20.5px;
+    color: #616161;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
 `
 
 export default function ProductCard () {
