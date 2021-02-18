@@ -2,12 +2,20 @@ import styled from 'styled-components'
 
 const MainDiv = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100px;
+   
+`
+const Information = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
     margin-left: 132px;
     margin-right: 132px;
-    `
+`
 
 const Text = styled.p`
     font-size: 24px;
@@ -39,17 +47,35 @@ const FilterButton = styled.button`
         color: #fff;
     }
 `
-
+//Separator
+const DivSeparator = styled.div`
+display: flex;
+justify-content: center;
+    width: 100%;
+`
+const SeparatorBig = styled.div`
+    height: 1px;
+    width: 90%;
+    background: #D9D9D9;
+`
 
 export default function Filters () {
     return(
-        <MainDiv>
-            <Text>16 of 32 products</Text>
-            <Separator/>
-            <Text>Sort by:</Text>
-            <FilterButton>Most Recent</FilterButton>
-            <FilterButton>Lowest price</FilterButton>
-            <FilterButton>Highest Price</FilterButton>
-        </MainDiv>
+        <>
+            <MainDiv>
+                <Information>
+                    <Text>16 of 32 products</Text>
+                    <Separator/>
+                    <Text>Sort by:</Text>
+                    <FilterButton>Most Recent</FilterButton>
+                    <FilterButton>Lowest price</FilterButton>
+                    <FilterButton>Highest Price</FilterButton>
+                </Information>
+                <DivSeparator>
+                    <SeparatorBig></SeparatorBig>
+                </DivSeparator>
+            </MainDiv>
+           
+        </>
     )
 }
