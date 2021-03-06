@@ -1,8 +1,10 @@
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
-import PlaceHolderImage from '../images/product-pics/AmazonEcho-x1.png'
 import MainShoppingIconHov from '../images/icons/buy-white.svg'
 import MainShoppingIcon from '../images/icons/buy-blue.svg'
 import CoinIcon from '../images/icons/coin.svg'
+import { productContext } from '../contexts/ProductsContext'
+
 
 //Hover
 
@@ -135,26 +137,50 @@ const RedeemButton = styled.button`
     font-size: 18px;
 `
 
-export default function ProductCard () {
+export default function ProductCard (props) {
+  
+    let { products, setProducts } = useContext(productContext)
+
+    async function ProductsFetch () {
+    
+        const response = await fetch("https://coding-challenge-api.aerolab.co/products", {
+            headers: {
+            'Content-Type': "application/json",
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
+            }
+        })
+        var result = await response.json(); 
+        console.log(result)
+        setProducts(result)
+
+       
+    }
+
+    useEffect(() => {
+        ProductsFetch()
+        console.log(products)
+    },[]) 
+   
     return(
-    <MainDivProduct>
+    <MainDivProduct key={props._id}>
         <ImageDiv>
-            <Image src={PlaceHolderImage}/>
+            <Image src={props.img}/>
             <ShoppingIcon src={MainShoppingIcon}></ShoppingIcon>
         </ImageDiv>
         <Separator></Separator>
         <CategoryAndName>
-            <Category>Smart Home</Category>
-            <Name>Amazon Echo</Name>
+            <Category>{props.category}</Category>
+            <Name>{props.name}</Name>
         </CategoryAndName>
         <HoverDiv>
             <ShoppingIconHover src={MainShoppingIconHov}></ShoppingIconHover>
             <CoinsDiv>
-                <HoverSaldo>12,000</HoverSaldo>
+                <HoverSaldo>{props.cost}</HoverSaldo>
                 <CoinHover src={CoinIcon}></CoinHover>
             </CoinsDiv>
             <RedeemButton>Redeem now</RedeemButton>
         </HoverDiv>
+        {products._id}
     </MainDivProduct>
     )
 }
