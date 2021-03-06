@@ -1,0 +1,114 @@
+[33mcommit c6771cd5c45d91848ca37e92bb6bacec4992871d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Tue Feb 23 16:11:22 2021 -0600
+
+    contexto creado
+
+[33mcommit 349e2b5069b4e0d816ba751f981b61f722ccea74[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Tue Feb 23 15:49:37 2021 -0600
+
+    primer fetch
+
+[33mcommit d467e89c820f2140cfa7dbd6f10aaf56ae0b0bf7[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Fri Feb 19 16:22:26 2021 -0600
+
+    Estilos información de saldo y flechas de página en filtros
+
+[33mcommit bf2152f7c31a18d1ac13da243365a1df8a4b27a1[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Thu Feb 18 17:43:05 2021 -0600
+
+    icono del header y bordes de los botones
+
+[33mcommit 9a5b6ef3172d13e99983cf1df967b282b85c85de[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Thu Feb 18 16:24:39 2021 -0600
+
+    hover de card y separador de filtros
+
+[33mcommit a5d132caa8a89dc04c23db228c35e40e1f606d57[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Wed Feb 17 12:56:07 2021 -0600
+
+    estilos hover
+
+[33mcommit 1af2f77d0f868b21ee4bc1bc82203bcadae55429[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Sat Feb 13 12:08:06 2021 -0600
+
+    avance product  card
+
+[33mcommit 7dc6e30b3c97c954f919369cd20e8bde8899f2e6[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Fri Feb 12 18:05:08 2021 -0600
+
+    estilos de los filtros
+
+[33mcommit 99c66156e5ee958f5cafea151e3a3bbc681149a8[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Thu Feb 11 16:36:35 2021 -0600
+
+    header
+
+[33mcommit ea6871dc2904500ddf5f64b5dfc2e25dbf7c3376[m
+Merge: 5cfd6b3 b32e0c6
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Tue Feb 9 16:03:03 2021 -0600
+
+    cambio
+
+[33mcommit 5cfd6b3b5b08074925035d868abf7306e64aa222[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Tue Feb 9 15:42:07 2021 -0600
+
+    cambio
+
+[33mcommit 37bcde81fc5eb571bb1ecca625c8ac1cdf2b84d9[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Tue Feb 9 15:15:18 2021 -0600
+
+    cambio de favicon
+
+[33mcommit b32e0c6d3ff0d5925c15b027ab92e0a1899539ec[m
+Merge: f19c8dc 8e77cad
+Author: Rosa <67343452+Rosa-musi@users.noreply.github.com>
+Date:   Mon Jan 25 19:13:32 2021 -0600
+
+    Merge pull request #1 from Rosa-musi/prueba
+    
+    Mi primer merge
+
+[33mcommit 8e77cadef04998772f7e5a216b78251d956e38f1[m[33m ([m[1;31morigin/prueba[m[33m, [m[1;32mprueba[m[33m)[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Mon Jan 25 19:00:10 2021 -0600
+
+    Lista de cambios:
+    -una línea
+    -otra línea
+
+[33mcommit 1e561ce98a16a965d726b785189976eeacd6d68b[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Mon Jan 25 18:50:49 2021 -0600
+
+    prueb
+    escribo aquí algo más largo
+
+[33mcommit f0e12f1122df93ea3a9bd17604e9b02e8f469e1b[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Mon Jan 25 18:49:22 2021 -0600
+
+    primer cambio
+
+[33mcommit f19c8dcbf8674063e2e2cbf722bbb0afa5bd54ff[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Mon Jan 25 18:16:59 2021 -0600
+
+    entorno limpio
+
+[33mcommit c54d1dedf86d1bfed25ead8dcb9cb5891c0fdd9f[m
+Author: Rosa-musi <nadamejor27@hotmail.com>
+Date:   Mon Jan 25 17:53:21 2021 -0600
+
+    Initialize project using Create React App
