@@ -1,9 +1,8 @@
-import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import MainShoppingIconHov from '../images/icons/buy-white.svg'
 import MainShoppingIcon from '../images/icons/buy-blue.svg'
 import CoinIcon from '../images/icons/coin.svg'
-import { productContext } from '../contexts/ProductsContext'
+
 
 
 //Hover
@@ -50,6 +49,7 @@ const MainDivProduct = styled.div`
     position: relative;
     width: 276px;
     height: 290px;
+    margin: 12px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
     &:hover ${HoverDiv} {
@@ -138,33 +138,11 @@ const RedeemButton = styled.button`
 `
 
 export default function ProductCard (props) {
-  
-    let { products, setProducts } = useContext(productContext)
-
-    async function ProductsFetch () {
     
-        const response = await fetch("https://coding-challenge-api.aerolab.co/products", {
-            headers: {
-            'Content-Type': "application/json",
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
-            }
-        })
-        var result = await response.json(); 
-        console.log(result)
-        setProducts(result)
-
-       
-    }
-
-    useEffect(() => {
-        ProductsFetch()
-        console.log(products)
-    },[]) 
-   
     return(
-    <MainDivProduct key={props._id}>
+    <MainDivProduct>
         <ImageDiv>
-            <Image src={props.img}/>
+            <Image src={props.img.url}/>
             <ShoppingIcon src={MainShoppingIcon}></ShoppingIcon>
         </ImageDiv>
         <Separator></Separator>
@@ -180,7 +158,6 @@ export default function ProductCard (props) {
             </CoinsDiv>
             <RedeemButton>Redeem now</RedeemButton>
         </HoverDiv>
-        {products._id}
     </MainDivProduct>
     )
 }

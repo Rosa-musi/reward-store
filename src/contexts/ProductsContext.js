@@ -4,7 +4,7 @@ import react, {createContext, useState, useEffect} from 'react'
 export const productContext = createContext();
 
 export const ProductsProvider = (props) => {
-    let [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
 
 
     return (
