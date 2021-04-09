@@ -47,6 +47,7 @@ const MainDivProduct = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
+    background: #fff;
     width: 276px;
     height: 290px;
     margin: 12px;

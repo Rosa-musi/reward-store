@@ -7,10 +7,12 @@ const BodyDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background: #F2F2F2;
 `
 
 export default function Filtration () {
-    const { products, setProducts } = useContext(productContext)
+    const { products, setProducts, currentPosts } = useContext(productContext)
+  
    
  
     const ProductsFetch = async () => {
@@ -31,17 +33,22 @@ export default function Filtration () {
         ProductsFetch()
     },[]) 
 
+    
+
+    console.log(currentPosts)
+
     return(
-        <body>
+
+        <>
             <BodyDiv>
                 {
-                    products.map((obj) => (
+                     currentPosts.map((obj) => (
                         <div key={obj._id}>
                             <ProductCard {...obj}/>
                         </div>
                     ))
                 }  
             </BodyDiv>
-        </body>
+        </>
     )
 }
