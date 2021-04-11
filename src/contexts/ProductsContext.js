@@ -14,9 +14,12 @@ export const ProductsProvider = (props) => {
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost)
 
+    //User
+    const [user, setUser] = useState ();
+
 
     return (
-        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost}}>
+        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost, user, setUser}}>
             {props.children}
         </productContext.Provider>
     )

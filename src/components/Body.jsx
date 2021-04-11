@@ -52,6 +52,7 @@ const FilterButton = styled.button`
         color: #fff;
     }
 `
+
 //Separator
 const DivSeparator = styled.div`
     display: flex;
@@ -97,54 +98,54 @@ const PagesDiv = styled.div`
 
 export default function Body() {
 
-    const { currentPosts, products, currentPage, setCurrentPage, postsPerPage, setIndexOfLastPost } = useContext(productContext)
+    const { currentPosts, products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage} = useContext(productContext)
 
     const paginate = () => {
-        alert(postsPerPage)
-        // if (products > currentPage * postsPerPage) {
-        //     setCurrentPage(currentPage + 1)
-        // } else if (products > currentPage * postsPerPage & products < currentPage + 1 * postsPerPage) {
-        //     setIndexOfLastPost(products.length);
-        // }
+        alert("pues no sé")
+      /*   if (products.length > indexOfLastPost) {
+              setCurrentPage(currentPage + 1)
+              alert(currentPage + 1)
+            } 
+        else if (products.length > indexOfLastPost && products.length < currentPage + 1) {
+              setCurrentPage(2)
+              setCurrentPosts(products.slice(indexOfFirstPost, products.length))
+            } */
+
+        //arreglar este desmadre, hacer la lógica para el cambio de página */
     }
 
-    const prueba = () => {
-        alert("hello")
-    }
 
     return(
         <>
-            <body>
-                <Filters>
-                    <Information>
-                        <Text>{currentPosts.length} of {products.length} products</Text>
-                        <Separator/>
-                        <Text>Sort by:</Text>
-                        <FilterButton>Lowest price</FilterButton>
-                        <FilterButton>Highest Price</FilterButton>
-                        <div>
-                            <img src={left} alt="left"/>
-                            <img src={right} alt= "right"/>
-                        </div>
-                    </Information>
-                    <DivSeparator>
-                        <SeparatorBig></SeparatorBig>
-                    </DivSeparator>
-                </Filters>
-                <Filtration />
-                <PagesBottom>
-                    <NumbOfPage>
-                        <TextPB>{currentPosts.length} of {products.length} products</TextPB>
-                        <PagesDiv>
-                            <a onClick={paginate}><img src={left} alt="left"/></a>
-                            <a><img src={right} alt= "right"/></a>
-                        </PagesDiv>
-                    </NumbOfPage>
-                    <DivSeparator style={{ marginTop: 20}}>
-                        <SeparatorBig></SeparatorBig>
-                    </DivSeparator>
-                </PagesBottom>
-            </body>
+            <Filters>
+                <Information>
+                    <Text>{currentPosts.length} of {products.length} products</Text>
+                    <Separator/>
+                    <Text>Sort by:</Text>
+                    <FilterButton>Lowest price</FilterButton>
+                    <FilterButton>Highest Price</FilterButton>
+                    <div>
+                        <img src={left} alt="left"/>
+                        <img src={right} alt= "right"/>
+                    </div>
+                </Information>
+                <DivSeparator>
+                    <SeparatorBig></SeparatorBig>
+                </DivSeparator>
+            </Filters>
+            <Filtration />
+            <PagesBottom>
+                <NumbOfPage>
+                    <TextPB>{currentPosts.length} of {products.length} products</TextPB>
+                    <PagesDiv>
+                        <a href="!#" onClick={paginate}><img src={left} alt="left"/></a>
+                        <a href="!#"><img src={right} alt= "right"/></a>
+                    </PagesDiv>
+                </NumbOfPage>
+                <DivSeparator style={{ marginTop: 20}}>
+                    <SeparatorBig></SeparatorBig>
+                </DivSeparator>
+            </PagesBottom>
         </>
     )
 }

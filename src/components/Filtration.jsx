@@ -11,7 +11,7 @@ const BodyDiv = styled.div`
 `
 
 export default function Filtration () {
-    const { products, setProducts, currentPosts } = useContext(productContext)
+    const { setProducts, currentPosts } = useContext(productContext)
   
    
  
@@ -35,7 +35,7 @@ export default function Filtration () {
 
     
 
-    console.log(currentPosts)
+ 
 
     return(
 

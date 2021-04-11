@@ -1,4 +1,6 @@
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
+import { productContext } from '../contexts/ProductsContext'
 import mainImage from '../images/header-x1.png'
 import mainIcon from '../images/icons/logo.svg'
 import coinIcon from '../images/icons/coin.svg'
@@ -55,14 +57,35 @@ const MainImage = styled.img`
 `
 
 export default function Header () {
+
+    const { user, setUser } = useContext(productContext)
+
+    const UserFetch = async () => {
+    
+        const response = await fetch("https://coding-challenge-api.aerolab.co/user/me", {
+            headers: {
+            'Content-Type': "application/json",
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
+            }
+        })
+        var result = await response.json(); 
+      
+        setUser(result)
+        console.log(result)
+    }
+
+    useEffect(() => {
+        UserFetch()
+    },[]) 
+
     return(
         <MainDiv>
             <UserDiv>
             <Icon src={mainIcon}></Icon>
                     <UserDataDiv>
-                        <TextUserDiv>Lolis</TextUserDiv>
+                        <TextUserDiv>{user.name}</TextUserDiv>
                         <CoinsDiv>
-                            <TextUserDiv>6000</TextUserDiv>
+                            <TextUserDiv>{user.points}</TextUserDiv>
                             <CoinIcon src={coinIcon}></CoinIcon>
                         </CoinsDiv>
                     </UserDataDiv>
