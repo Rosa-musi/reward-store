@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import Header from './components/Header'
+import Modal from './components/Modal'
 import Body from './components/Body'
 import { ProductsProvider} from './contexts/ProductsContext'
 
 function App() {
   
-
   return (
     <ProductsProvider>
-      <Header />  
+      <Header />
+      <Modal />  
       <Body />
     </ProductsProvider>
   );

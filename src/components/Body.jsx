@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import Filtration from './Filtration'
 import { productContext } from '../contexts/ProductsContext'
@@ -98,22 +98,30 @@ const PagesDiv = styled.div`
 
 export default function Body() {
 
-    const { currentPosts, products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage} = useContext(productContext)
+    const { currentPosts, products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost} = useContext(productContext)
 
-    const paginate = () => {
-        alert("pues no sé")
-      /*   if (products.length > indexOfLastPost) {
-              setCurrentPage(currentPage + 1)
-              alert(currentPage + 1)
+    const paginate = (e) => {
+        //alert("pues no sé")
+        e.preventDefault()
+         if (products.length > indexOfLastPost) {
+              setCurrentPage( (prevState) => {
+                  return(
+                    prevState + 1
+                  )
+              })
+              //alert(currentPage)
             } 
         else if (products.length > indexOfLastPost && products.length < currentPage + 1) {
               setCurrentPage(2)
               setCurrentPosts(products.slice(indexOfFirstPost, products.length))
-            } */
+            } 
 
         //arreglar este desmadre, hacer la lógica para el cambio de página */
     }
 
+    useEffect(() => {
+        setIndexOfLastPost(currentPage * postsPerPage);
+    }, [currentPage]);
 
     return(
         <>
@@ -138,8 +146,8 @@ export default function Body() {
                 <NumbOfPage>
                     <TextPB>{currentPosts.length} of {products.length} products</TextPB>
                     <PagesDiv>
-                        <a href="!#" onClick={paginate}><img src={left} alt="left"/></a>
-                        <a href="!#"><img src={right} alt= "right"/></a>
+                        <a href="!#" ><img src={left} alt="left"/></a>
+                        <a href="!#" onClick={paginate}><img src={right} alt= "right"/></a>
                     </PagesDiv>
                 </NumbOfPage>
                 <DivSeparator style={{ marginTop: 20}}>

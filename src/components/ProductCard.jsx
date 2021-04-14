@@ -1,3 +1,5 @@
+import React, {useState, useContext} from 'react'
+import { productContext } from '../contexts/ProductsContext'
 import styled from 'styled-components'
 import MainShoppingIconHov from '../images/icons/buy-white.svg'
 import MainShoppingIcon from '../images/icons/buy-blue.svg'
@@ -54,7 +56,7 @@ const MainDivProduct = styled.div`
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
     &:hover ${HoverDiv} {
-        display: flex;
+        display: ${({sinHover}) => (sinHover ? "none" : "flex")};
     }
 `
 const ImageDiv = styled.div`
@@ -140,11 +142,16 @@ const RedeemButton = styled.button`
 
 export default function ProductCard (props) {
     
+    const { show, setShow, user } = useContext(productContext)
+
     return(
-    <MainDivProduct>
+    <MainDivProduct sinHover={user?.points < props.cost} >
         <ImageDiv>
             <Image src={props.img.url}/>
-            <ShoppingIcon src={MainShoppingIcon}></ShoppingIcon>
+            {user?.points > props.cost ? <ShoppingIcon src={MainShoppingIcon}></ShoppingIcon> :
+                <NotEnCoinsDiv>
+                    <Coin></Coin>
+                </NotEnCoinsDiv>}
         </ImageDiv>
         <Separator></Separator>
         <CategoryAndName>
@@ -157,7 +164,7 @@ export default function ProductCard (props) {
                 <HoverSaldo>{props.cost}</HoverSaldo>
                 <CoinHover src={CoinIcon}></CoinHover>
             </CoinsDiv>
-            <RedeemButton>Redeem now</RedeemButton>
+            <RedeemButton onClick={() => setShow(true)}>Redeem now</RedeemButton>
         </HoverDiv>
     </MainDivProduct>
     )

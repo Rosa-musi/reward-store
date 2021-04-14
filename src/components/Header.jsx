@@ -83,9 +83,9 @@ export default function Header () {
             <UserDiv>
             <Icon src={mainIcon}></Icon>
                     <UserDataDiv>
-                        <TextUserDiv>{user.name}</TextUserDiv>
+                        <TextUserDiv>{user && user.name}</TextUserDiv>
                         <CoinsDiv>
-                            <TextUserDiv>{user.points}</TextUserDiv>
+                            <TextUserDiv>{user?.points}</TextUserDiv>
                             <CoinIcon src={coinIcon}></CoinIcon>
                         </CoinsDiv>
                     </UserDataDiv>
