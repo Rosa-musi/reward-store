@@ -14,18 +14,18 @@ const Filters = styled.div`
 `
 const Information = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     height: auto;
-    padding-left: 132px;
-    margin-right: 132px;
+
 `
 
 const Text = styled.p`
     font-size: 24px;
-    margin: 10px;
-    color: #A3A3A3;
+    color: #616161;
+    padding-left: 60px;
 `
 
 const Separator = styled.div`
@@ -57,6 +57,12 @@ const PagesDivTop = styled.div`
     justify-content: center;
     width: 100px;
 `
+const LeftPage = styled.img`
+    margin-right: 15px;
+`
+const RightPageTop = styled.img`
+    margin-right: 60px;
+`
 
 //Separator
 const DivSeparator = styled.div`
@@ -83,7 +89,7 @@ const PagesBottom = styled.div`
 `
 const NumbOfPage = styled.div`
     display: flex;
-    justify-content: space-space-evenly;
+    flex-direction: row;
     align-items: center;
     width: 100%;
     height: auto;
@@ -91,19 +97,20 @@ const NumbOfPage = styled.div`
 const TextPB = styled.p`
     font-size: 24px;
     margin: 10px;
-    color: #A3A3A3;
-    padding-left: 132px;
+    color: #616161;
+    padding-left: 75px;
     width: 100%;
 ` 
 const PagesDivBot = styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
+    padding-right: 100px;
+    width: auto;
 `
 
 export default function Body() {
 
-    const { currentPosts, products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost} = useContext(productContext)
+    const { products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost} = useContext(productContext)
 
     const paginateRight = (e) => {
         //poner el e.preventDefault para que la página no se reinicie al usar el tag <a>
@@ -160,9 +167,9 @@ export default function Body() {
                             style= {{
                             visibility: products.length == indexOfLastPost ? 'visible' : 'hidden'
                         }}>
-                            <img src={left} alt="left"/>
+                            <LeftPage src={left} alt="left"/>
                         </a>
-                        <a href="!#" onClick={paginateRight}><img src={right} alt= "right"/></a>
+                        <a href="!#" onClick={paginateRight}><RightPageTop src={right} alt= "right"/></a>
                     </PagesDivTop>
                 </Information>
                 <DivSeparator>
@@ -179,7 +186,7 @@ export default function Body() {
                             style= {{
                             visibility: products.length == indexOfLastPost ? 'visible' : 'hidden'
                         }}>
-                            <img src={left} alt="left"/>
+                            <LeftPage src={left} alt="left"/>
                         </a>
                         <a href="!#" onClick={paginateRight}><img src={right} alt= "right"/></a>
                     </PagesDivBot>

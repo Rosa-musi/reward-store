@@ -80,13 +80,18 @@ const ShoppingIcon = styled.img`
 //Not enough coins
 //condicionarlo para queu sólo se muestre cuando haya saldo
 const NotEnCoinsDiv = styled.div`
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 100;
     width: 142px;
     height: 42px;
     background:#616161;
     border-radius: 20.5px;
     color: #fff;
     opacity: 80%;
-    cursor: pointer;
     outline: none;
     font-size: 14px;
 `
@@ -95,6 +100,7 @@ const Coin = styled.img`
     width: 20px;
 `
 const NotEText = styled.p`
+    padding: 5px;
     font-size: 14px;
     color: #fff;
 `
@@ -142,7 +148,7 @@ const RedeemButton = styled.button`
 
 export default function ProductCard (props) {
     
-    const { show, setShow, user } = useContext(productContext)
+    const { products, setShow, user } = useContext(productContext)
 
     return(
     <MainDivProduct sinHover={user?.points < props.cost} >
@@ -150,7 +156,8 @@ export default function ProductCard (props) {
             <Image src={props.img.url}/>
             {user?.points > props.cost ? <ShoppingIcon src={MainShoppingIcon}></ShoppingIcon> :
                 <NotEnCoinsDiv>
-                    <Coin></Coin>
+                    <NotEText>You need {props.cost - user?.points}</NotEText>
+                    <Coin src={CoinIcon}></Coin>
                 </NotEnCoinsDiv>}
         </ImageDiv>
         <Separator></Separator>
