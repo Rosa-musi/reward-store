@@ -52,6 +52,11 @@ const FilterButton = styled.button`
         color: #fff;
     }
 `
+const PagesDivTop = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100px;
+`
 
 //Separator
 const DivSeparator = styled.div`
@@ -78,7 +83,7 @@ const PagesBottom = styled.div`
 `
 const NumbOfPage = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-space-evenly;
     align-items: center;
     width: 100%;
     height: auto;
@@ -90,7 +95,7 @@ const TextPB = styled.p`
     padding-left: 132px;
     width: 100%;
 ` 
-const PagesDiv = styled.div`
+const PagesDivBot = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
@@ -100,8 +105,10 @@ export default function Body() {
 
     const { currentPosts, products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost} = useContext(productContext)
 
-    const paginate = (e) => {
-        //alert("pues no sé")
+    const paginateRight = (e) => {
+        //poner el e.preventDefault para que la página no se reinicie al usar el tag <a>
+        //ya que los hilos de trabajo son asícronos hay que hacer una función para asegurarlos que setCurrentPage se ejecute primero
+        //entonces se usa el prevState como parámetro y entonces sele suma el 1 para la siguiente página.
         e.preventDefault()
          if (products.length > indexOfLastPost) {
               setCurrentPage( (prevState) => {
@@ -109,15 +116,30 @@ export default function Body() {
                     prevState + 1
                   )
               })
-              //alert(currentPage)
             } 
+        //esta opción es para cuando el contenido del array no sea exacto, como en este caso que son 16 artículos en casa página
         else if (products.length > indexOfLastPost && products.length < currentPage + 1) {
-              setCurrentPage(2)
+            setCurrentPage( (prevState) => {
+                return(
+                  prevState + 1
+                )
+            })
               setCurrentPosts(products.slice(indexOfFirstPost, products.length))
             } 
-
-        //arreglar este desmadre, hacer la lógica para el cambio de página */
     }
+
+    const paginateLeft = (e) => {
+
+    e.preventDefault()
+        if (currentPage > 1) {
+            setCurrentPage( (prevState) => {
+                return(
+                prevState - 1
+                )
+            })
+        } 
+    }
+
 
     useEffect(() => {
         setIndexOfLastPost(currentPage * postsPerPage);
@@ -127,15 +149,21 @@ export default function Body() {
         <>
             <Filters>
                 <Information>
-                    <Text>{currentPosts.length} of {products.length} products</Text>
+                    <Text>{products.length > indexOfLastPost && products.length < currentPage + 1 ? products.length : indexOfLastPost} of {products.length} products</Text>
                     <Separator/>
                     <Text>Sort by:</Text>
                     <FilterButton>Lowest price</FilterButton>
                     <FilterButton>Highest Price</FilterButton>
-                    <div>
-                        <img src={left} alt="left"/>
-                        <img src={right} alt= "right"/>
-                    </div>
+                    <PagesDivTop>
+                        <a href="!#" 
+                            onClick={paginateLeft}            
+                            style= {{
+                            visibility: products.length == indexOfLastPost ? 'visible' : 'hidden'
+                        }}>
+                            <img src={left} alt="left"/>
+                        </a>
+                        <a href="!#" onClick={paginateRight}><img src={right} alt= "right"/></a>
+                    </PagesDivTop>
                 </Information>
                 <DivSeparator>
                     <SeparatorBig></SeparatorBig>
@@ -144,11 +172,17 @@ export default function Body() {
             <Filtration />
             <PagesBottom>
                 <NumbOfPage>
-                    <TextPB>{currentPosts.length} of {products.length} products</TextPB>
-                    <PagesDiv>
-                        <a href="!#" ><img src={left} alt="left"/></a>
-                        <a href="!#" onClick={paginate}><img src={right} alt= "right"/></a>
-                    </PagesDiv>
+                    <TextPB>{products.length > indexOfLastPost && products.length < currentPage + 1 ? products.length : indexOfLastPost} of {products.length} products</TextPB>
+                    <PagesDivBot>
+                        <a href="!#"   
+                            onClick={paginateLeft}          
+                            style= {{
+                            visibility: products.length == indexOfLastPost ? 'visible' : 'hidden'
+                        }}>
+                            <img src={left} alt="left"/>
+                        </a>
+                        <a href="!#" onClick={paginateRight}><img src={right} alt= "right"/></a>
+                    </PagesDivBot>
                 </NumbOfPage>
                 <DivSeparator style={{ marginTop: 20}}>
                     <SeparatorBig></SeparatorBig>
