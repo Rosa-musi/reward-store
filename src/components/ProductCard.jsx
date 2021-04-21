@@ -17,7 +17,7 @@ const HoverDiv = styled.div`
     width: 276px;
     height: 290px;
     background: linear-gradient(180deg, rgba(10, 212, 250, 0.86) 0%, rgba(37, 187, 241, 0.86) 100%);
-    z-index: 200;
+    z-index: 50;
 `
 
 const ShoppingIconHover = styled.img`
@@ -74,7 +74,7 @@ const Image = styled.img`
 const ShoppingIcon = styled.img`
     width: 42px;
     position: absolute;
-    z-index: 100;
+    z-index: 30;
     align-self: flex-end;
 `
 //Not enough coins
@@ -85,7 +85,7 @@ const NotEnCoinsDiv = styled.div`
     align-items: center;
     justify-content: space-around;
     position: absolute;
-    z-index: 100;
+    z-index: 30;
     width: 142px;
     height: 42px;
     background:#616161;
