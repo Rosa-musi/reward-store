@@ -61,7 +61,7 @@ const LeftPage = styled.img`
     margin-right: 15px;
 `
 const RightPageTop = styled.img`
-    margin-right: 60px;
+    margin-right: 120px;
 `
 
 //Separator
@@ -85,7 +85,8 @@ const PagesBottom = styled.div`
     background: #F2F2F2;
     width: 100%;
     height: 100px;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
+    padding-top: 50px;
 `
 const NumbOfPage = styled.div`
     display: flex;
@@ -98,7 +99,7 @@ const TextPB = styled.p`
     font-size: 24px;
     margin: 10px;
     color: #616161;
-    padding-left: 75px;
+    padding-left: 90px;
     width: 100%;
 ` 
 const PagesDivBot = styled.div`

@@ -49,7 +49,7 @@ const CoinsDiv = styled.div`
     margin-right: 42px;
 `
 const CoinIcon = styled.img`
-    width: 24px;
+    width: 50px;
     padding: 10px;
 `
 const MainImage = styled.img`
