@@ -1,9 +1,10 @@
 import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
-import Filtration from './Filtration'
-import { productContext } from '../contexts/ProductsContext'
-import left from '../images/icons/arrow-left.svg'
-import right from '../images/icons/arrow-right.svg'
+import Modal from '../Modal'
+import Filtration from '../Filtration'
+import { productContext } from '../../contexts/ProductsContext'
+import left from '../../images/icons/arrow-left.svg'
+import right from '../../images/icons/arrow-right.svg'
 
 const Filters = styled.div`
     display: flex;
@@ -155,6 +156,7 @@ export default function Body() {
 
     return(
         <>
+            <Modal/>
             <Filters>
                 <Information>
                     <Text>{products.length > indexOfLastPost && products.length < currentPage + 1 ? products.length : indexOfLastPost} of {products.length} products</Text>

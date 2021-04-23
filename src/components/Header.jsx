@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import { productContext } from '../contexts/ProductsContext'
+import { Link } from 'react-router-dom';
 import mainImage from '../images/header-x1.png'
 import mainIcon from '../images/icons/logo.svg'
 import coinIcon from '../images/icons/coin.svg'
@@ -13,13 +14,20 @@ const MainDiv = styled.div`
    display: flex;
    flex-direction: column;
 `
-const UserDiv = styled.div`
+const NavBar = styled.div`
     height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
+
+//Páginas (Router)
+const PagesList = styled.ul`
+    text-decoration: none;
+    display: inline-block;
+`
+
 const Icon = styled.img`
     width: 39px;
     margin-left: 40px;
@@ -58,7 +66,7 @@ const MainImage = styled.img`
 
 export default function Header () {
 
-    const { user, setUser } = useContext(productContext)
+    const { user, setUser, points, setPoints } = useContext(productContext)
 
     const UserFetch = async () => {
     
@@ -80,16 +88,21 @@ export default function Header () {
 
     return(
         <MainDiv>
-            <UserDiv>
-            <Icon src={mainIcon}></Icon>
-                    <UserDataDiv>
-                        <TextUserDiv>{user && user.name}</TextUserDiv>
-                        <CoinsDiv>
-                            <TextUserDiv>{user?.points}</TextUserDiv>
-                            <CoinIcon src={coinIcon}></CoinIcon>
-                        </CoinsDiv>
-                    </UserDataDiv>
-            </UserDiv>
+            <NavBar>
+                <Icon src={mainIcon}></Icon>
+                <PagesList>
+                    <Link to="/"><li>Store</li></Link>
+                    <Link to="/redeems"><li>Redeems</li></Link>
+                    <Link to="/getcoins"><li>Get Coins</li></Link>
+                </PagesList>
+                <UserDataDiv>
+                    <TextUserDiv>{user && user.name}</TextUserDiv>
+                    <CoinsDiv>
+                        <TextUserDiv>{user?.points}</TextUserDiv>
+                        <CoinIcon src={coinIcon}></CoinIcon>
+                    </CoinsDiv>
+                </UserDataDiv>
+            </NavBar>
             <MainImage src={mainImage} />
         </MainDiv>
     )

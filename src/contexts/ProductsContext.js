@@ -16,6 +16,7 @@ export const ProductsProvider = (props) => {
 
     //User
     const [user, setUser] = useState ();
+    const [points, setPoints] = useState ();
 
     //Modal
     const [show, setShow] = useState(false);
@@ -24,7 +25,7 @@ export const ProductsProvider = (props) => {
     console.log(indexOfLastPost)
 
     return (
-        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost, user, setUser, show, setShow}}>
+        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost, user, setUser, show, setShow, points, setPoints}}>
             {props.children}
         </productContext.Provider>
     )
