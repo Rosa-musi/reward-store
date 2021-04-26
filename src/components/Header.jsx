@@ -21,18 +21,25 @@ const NavBar = styled.div`
     justify-content: space-between;
     align-items: center;
 `
-
-//Páginas (Router)
-const PagesList = styled.ul`
-    text-decoration: none;
-    display: inline-block;
-`
-
+//Icono principal
 const Icon = styled.img`
     width: 39px;
     margin-left: 40px;
+    cursor: pointer;
 
 `
+//Páginas (Router)
+const PagesList = styled.ul`
+    display: flex;
+    margin-right: 60px;
+`
+const Pages = styled.a`
+    text-decoration: none;
+    list-style: none;
+    padding: 5px;
+`
+
+
 const UserDataDiv = styled.div`
     display: flex;
     align-items: center;
@@ -69,18 +76,24 @@ export default function Header () {
     const { user, setUser, points, setPoints } = useContext(productContext)
 
     const UserFetch = async () => {
-    
-        const response = await fetch("https://coding-challenge-api.aerolab.co/user/me", {
-            headers: {
-            'Content-Type': "application/json",
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
-            }
-        })
-        var result = await response.json(); 
-      
-        setUser(result)
-        console.log(result)
+        
+        try{
+            const response = await fetch("https://coding-challenge-api.aerolab.co/user/me", {
+                headers: {
+                'Content-Type': "application/json",
+                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
+                }
+            })
+            var result = await response.json(); 
+          
+            setUser(result)
+            setPoints(result.points)
+            console.log(result)
+        } catch (error) {
+                console.log("Error", error)
+        }
     }
+      
 
     useEffect(() => {
         UserFetch()
@@ -89,16 +102,16 @@ export default function Header () {
     return(
         <MainDiv>
             <NavBar>
-                <Icon src={mainIcon}></Icon>
-                <PagesList>
-                    <Link to="/"><li>Store</li></Link>
-                    <Link to="/redeems"><li>Redeems</li></Link>
-                    <Link to="/getcoins"><li>Get Coins</li></Link>
-                </PagesList>
+                <Link to="/"><Icon src={mainIcon}></Icon></Link>
+               
                 <UserDataDiv>
+                <PagesList>
+                    <Link to="/redeems"><Pages>Redeems</Pages></Link>
+                    <Link to="/getcoins"><Pages>Get Coins</Pages></Link>
+                </PagesList>
                     <TextUserDiv>{user && user.name}</TextUserDiv>
                     <CoinsDiv>
-                        <TextUserDiv>{user?.points}</TextUserDiv>
+                        <TextUserDiv>{points}</TextUserDiv>
                         <CoinIcon src={coinIcon}></CoinIcon>
                     </CoinsDiv>
                 </UserDataDiv>

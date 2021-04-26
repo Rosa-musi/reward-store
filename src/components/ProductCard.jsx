@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import { productContext } from '../contexts/ProductsContext'
 import styled from 'styled-components'
 import MainShoppingIconHov from '../images/icons/buy-white.svg'
