@@ -19,17 +19,13 @@ const Title = styled.h2`
 const RedeemsText = styled.p`
     margin-bottom: 30px;
 `
-const ProductsDiv = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-`
 
 export default function RedeemHistory  () {
 
     return(
         <RedeemHistDiv>
             <Title>Redeemed products</Title>
-            <RedeemsText>Hystory of your redeems</RedeemsText>
+            <RedeemsText>History of your redeems</RedeemsText>
             <RedeemsCard></RedeemsCard>
         </RedeemHistDiv>
     )

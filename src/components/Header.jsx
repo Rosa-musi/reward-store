@@ -37,6 +37,20 @@ const Pages = styled.a`
     text-decoration: none;
     list-style: none;
     padding: 5px;
+    font-size: 22px;
+    margin: 10px;
+    color: #616161;
+
+    //a:hover, a:visited, a:link, a:active
+
+    &:hover {
+        border: solid 2px #616161;
+        border-radius: 20.5px;
+        background: #0AD4FA;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+    }
 `
 
 
