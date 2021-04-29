@@ -112,7 +112,7 @@ const PagesDivBot = styled.div`
 
 export default function Body() {
 
-    const { products,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost} = useContext(productContext)
+    const { products, currentPosts,  currentPage, setCurrentPage, indexOfLastPost, setCurrentPosts, indexOfFirstPost, postsPerPage, setIndexOfLastPost, setProducts } = useContext(productContext)
 
     const paginateRight = (e) => {
         //poner el e.preventDefault para que la página no se reinicie al usar el tag <a>
@@ -139,20 +139,32 @@ export default function Body() {
 
     const paginateLeft = (e) => {
 
-    e.preventDefault()
-        if (currentPage > 1) {
-            setCurrentPage( (prevState) => {
-                return(
-                prevState - 1
+        e.preventDefault()
+            if (currentPage > 1) {
+                setCurrentPage( (prevState) => {
+                    return(
+                    prevState - 1
                 )
             })
         } 
     }
 
+    console.log(currentPage)
+    console.log(currentPosts)
+
 
     useEffect(() => {
         setIndexOfLastPost(currentPage * postsPerPage);
     }, [currentPage]);
+
+    const handleLowestPrice = () => {
+        //no funcionaba porque estaba usando directamente products y estaba mutando el estado
+        setProducts([...products].sort((a, b) =>{
+            let result = a.cost - b.cost
+            return result
+        }))
+        console.log("pollo frodón")
+    }
 
     return(
         <>
@@ -162,7 +174,7 @@ export default function Body() {
                     <Text>{products.length > indexOfLastPost && products.length < currentPage + 1 ? products.length : indexOfLastPost} of {products.length} products</Text>
                     <Separator/>
                     <Text>Sort by:</Text>
-                    <FilterButton>Lowest price</FilterButton>
+                    <FilterButton onClick={handleLowestPrice}>Lowest price</FilterButton>
                     <FilterButton>Highest Price</FilterButton>
                     <PagesDivTop>
                         <a href="!#" 

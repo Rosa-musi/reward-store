@@ -150,6 +150,29 @@ export default function ProductCard (props) {
     
     const { products, setShow, user } = useContext(productContext)
 
+    const redeem = async (id) => {
+    
+        try {
+           console.log(id)
+           const response = await fetch('https://coding-challenge-api.aerolab.co/redeem', {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json",
+                   "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
+               },
+               body: JSON.stringify({productId: id})
+           })
+           var result = await response.json(); 
+     
+           setShow(true)
+           console.log(result)
+        
+       } catch (error) {
+           console.log("error", error)
+       } 
+
+  }
+
     return(
     <MainDivProduct sinHover={user?.points < props.cost} >
         <ImageDiv>
@@ -171,7 +194,7 @@ export default function ProductCard (props) {
                 <HoverSaldo>{props.cost}</HoverSaldo>
                 <CoinHover src={CoinIcon}></CoinHover>
             </CoinsDiv>
-            <RedeemButton onClick={() => setShow(true)}>Redeem now</RedeemButton>
+            <RedeemButton onClick={() =>redeem(props._id)}>Redeem now</RedeemButton>
         </HoverDiv>
     </MainDivProduct>
     )

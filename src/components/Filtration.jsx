@@ -38,7 +38,7 @@ export default function Filtration () {
         ProductsFetch()
     },[]) 
 
-    
+    console.log("d")
 
  
 
