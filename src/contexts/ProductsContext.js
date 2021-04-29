@@ -14,24 +14,24 @@ export const ProductsProvider = (props) => {
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const [currentPosts, setCurrentPost] = useState([])
 
-
+    //User
+    const [user, setUser] = useState ();
+    const [points, setPoints] = useState ();
+    
     useEffect(() => {
         console.log("a")
        setCurrentPost(products.slice(indexOfFirstPost, indexOfLastPost))
     },[products, indexOfFirstPost, indexOfLastPost])
-    
-    //User
-    const [user, setUser] = useState ();
-    const [points, setPoints] = useState ();
 
     //Modal
     const [show, setShow] = useState(false);
 
     //Redeems
     const [redeems, setRedeems] = useState([]);
+    const [redeemMessage, setRedeemMessage] = useState()
 
     return (
-        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost, user, setUser, show, setShow, points, setPoints, redeems, setRedeems, setCurrentPost }}>
+        <productContext.Provider value={{products, setProducts, currentPage, setCurrentPage, postsPerPage, setPostsPerPage, indexOfLastPost, indexOfFirstPost, currentPosts,  setIndexOfLastPost, user, setUser, show, setShow, points, setPoints, redeems, setRedeems, setCurrentPost, redeemMessage, setRedeemMessage }}>
             {props.children}
         </productContext.Provider>
     )
