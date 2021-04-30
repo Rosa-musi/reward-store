@@ -55,12 +55,12 @@ export default function Header () {
     return(
         <MainDiv>
             <NavBar>
-                <Link to="/"><Icon src={mainIcon}></Icon></Link>
+                <Link to="/reward-store/"><Icon src={mainIcon}></Icon></Link>
                
                 <UserDataDiv>
                 <PagesList>
-                    <Link to="/redeems"><Pages>Redeems</Pages></Link>
-                    <Link to="/getcoins"><Pages>Get Coins</Pages></Link>
+                    <Link to="/reward-store/redeems"><Pages>Redeems</Pages></Link>
+                    <Link to="/reward-store/getcoins"><Pages>Get Coins</Pages></Link>
                 </PagesList>
                     <TextUserDiv>{user && user.name}</TextUserDiv>
                     <CoinsDiv>

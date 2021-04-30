@@ -20,9 +20,9 @@ function App() {
         <ProductsProvider>
           <Header />
           <Switch>
-            <Route path="/" exact><Body /></Route>
-            <Route path="/redeems" exact><RedeemHistory/></Route>
-            <Route path="/getcoins" exact><GetCoins/></Route>
+            <Route path="/reward-store/" exact><Body /></Route>
+            <Route path="/reward-store/redeems" exact><RedeemHistory/></Route>
+            <Route path="/reward-store/getcoins" exact><GetCoins/></Route>
 
           </Switch>
           
