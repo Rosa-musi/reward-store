@@ -54,7 +54,7 @@ export default function Header () {
 
     return(
         <MainDiv>
-            <NavBar>
+            <NavBar> 
                 <Link to="/reward-store/"><Icon src={mainIcon}></Icon></Link>
                
                 <UserDataDiv>

@@ -28,12 +28,13 @@ import {
 
 export default function ProductCard (props) {
     
-    const { setShow, user, setRedeemMessage } = useContext(productContext)
+    const { setShow, user, setRedeemMessage, setPoints } = useContext(productContext)
 
-    const redeem = async (id) => {
+    const redeem = async (id, cost) => {
     
         try {
            console.log(id)
+           console.log(cost)
            const response = await fetch('https://coding-challenge-api.aerolab.co/redeem', {
                method: "POST",
                headers: {
@@ -41,11 +42,16 @@ export default function ProductCard (props) {
                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDM0NDk1MDdlNzE4NzAwMjBlMzhmMTEiLCJpYXQiOjE2MTQwMzkzNzZ9.Nnt8B1ey0vF4h6iW0rGTjbQBIKdXGth5wX4eVGEWEso"
                },
                body: JSON.stringify({productId: id})
-           })
-           var result = await response.json(); 
+            })
+            var result = await response.json(); 
      
-           setShow(true)
-           setRedeemMessage(result.message)
+            setShow(true)
+            setRedeemMessage(result.message)
+            setPoints( (prevState) => {
+                return(
+                    prevState - cost
+                ) 
+            })
 
            console.log(result)
         
@@ -75,7 +81,7 @@ export default function ProductCard (props) {
                 <HoverSaldo>{props.cost}</HoverSaldo>
                 <CoinHover src={CoinIcon}></CoinHover>
             </CoinsDiv>
-            <RedeemButton onClick={() =>redeem(props._id)}>Redeem now</RedeemButton>
+            <RedeemButton onClick={() =>redeem(props._id, props.cost)}>Redeem now</RedeemButton>
         </HoverDiv>
     </MainDivProduct>
     )

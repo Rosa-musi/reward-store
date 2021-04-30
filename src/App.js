@@ -19,7 +19,7 @@ function App() {
         <GlobalStyle/>
         <ProductsProvider>
           <Header />
-          <Switch>
+          <Switch> 
             <Route path="/reward-store/" exact><Body /></Route>
             <Route path="/reward-store/redeems" exact><RedeemHistory/></Route>
             <Route path="/reward-store/getcoins" exact><GetCoins/></Route>
